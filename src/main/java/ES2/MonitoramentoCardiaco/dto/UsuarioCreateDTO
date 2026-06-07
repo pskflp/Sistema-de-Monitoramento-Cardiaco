@@ -1,0 +1,45 @@
+package com.seuprojeto.saude.dto;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UsuarioCreateDTO {
+
+    @NotBlank(message = "O nome não pode estar em branco.")
+    private String nome;
+
+    @NotBlank(message = "O sobrenome não pode estar em branco")
+    private String sobrenome;
+
+    @NotBlank(message = "E-mail obrigatório.")
+    @Email(message = "Formato de e-mail inválido.")
+    private String email;
+
+    @NotBlank(message = "O telefone é obrigatório.")
+    private String telefone;
+
+    @NotBlank(message = "A senha é obrigatória.")
+    @Size(min = 8, message = "A senha deve ter pelo menos 6 caracteres.")
+    private String senha;
+
+    @NotNull(message = "Insira a data de nascimento.")
+    @Past(message = "Data de nascimento inválida.")
+    private LocalDate dataNascimento;
+
+    @NotBlank(message = "Esse campo deve ser preenchido.")
+    private String sexo;
+
+    @NotBlank(message = "Esse campo deve ser preenchido.")
+    private String pais;
+}
