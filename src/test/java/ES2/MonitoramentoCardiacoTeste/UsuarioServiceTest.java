@@ -36,7 +36,7 @@ class UsuarioServiceTest {
     void deveCriarContaComSucesso() {
         UsuarioCreateDTO dto = new UsuarioCreateDTO(
                 "João", "Silva", "joao@email.com", "11999999999",
-                "senha123", LocalDate.of(1990, 1, 1), "M", "Brasil"
+                "senha123", "senha123", LocalDate.of(1990, 1, 1), "M", "Brasil"
         );
 
         Usuario usuarioSalvo = new Usuario();
@@ -65,7 +65,7 @@ class UsuarioServiceTest {
     void deveLancarExcecaoQuandoEmailJaCadastrado() {
         UsuarioCreateDTO dto = new UsuarioCreateDTO(
                 "João", "Silva", "joao@email.com", "11999999999",
-                "senha123", LocalDate.of(1990, 1, 1), "M", "Brasil"
+                "senha123", "senha123", LocalDate.of(1990, 1, 1), "M", "Brasil"
         );
 
         when(usuarioRepository.findByEmail(dto.getEmail()))

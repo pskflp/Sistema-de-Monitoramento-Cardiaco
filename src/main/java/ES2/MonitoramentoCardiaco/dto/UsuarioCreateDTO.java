@@ -33,6 +33,9 @@ public class UsuarioCreateDTO {
     @Size(min = 8, message = "A senha deve ter pelo menos 6 caracteres.")
     private String senha;
 
+    @NotBlank(message = "A confirmação de senha é obrigatória.")
+    private String confirmarSenha;
+
     @NotNull(message = "Insira a data de nascimento.")
     @Past(message = "Data de nascimento inválida.")
     private LocalDate dataNascimento;

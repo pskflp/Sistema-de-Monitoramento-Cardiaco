@@ -1,9 +1,10 @@
 package ES2.MonitoramentoCardiacoTeste;
 
+import ES2.MonitoramentoCardiaco.MonitoramentoCardiacoApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = MonitoramentoCardiacoApplication.class)
 class MonitoramentoCardiacoApplicationTests {
 
     @Test

@@ -20,7 +20,11 @@ public class UsuarioService {
     }
 
     public UsuarioResponseDTO criarConta(UsuarioCreateDTO dto) {
-       
+
+        if (!dto.getSenha().equals(dto.getConfirmarSenha())) {
+            throw new IllegalArgumentException("As senhas não coincidem.");
+        }
+
         Optional<Usuario> usuarioExistente = usuarioRepository.findByEmail(dto.getEmail());
         if (usuarioExistente.isPresent()) {
             throw new IllegalArgumentException("Já existe um usuário cadastrado com este e-mail.");
