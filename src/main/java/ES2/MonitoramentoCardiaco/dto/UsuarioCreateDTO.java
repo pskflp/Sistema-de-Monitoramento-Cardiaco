@@ -1,4 +1,4 @@
-package com.seuprojeto.saude.dto;
+package ES2.MonitoramentoCardiaco.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,9 +1,8 @@
-package com.seuprojeto.saude.model;
+package ES2.MonitoramentoCardiaco.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import java.time.LocalDate;
 
 @Data 

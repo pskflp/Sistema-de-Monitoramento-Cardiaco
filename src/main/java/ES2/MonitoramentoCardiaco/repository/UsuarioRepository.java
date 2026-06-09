@@ -1,6 +1,6 @@
-package com.seuprojeto.saude.repository;
+package ES2.MonitoramentoCardiaco.repository;
+import ES2.MonitoramentoCardiaco.model.Usuario;
 
-import com.seuprojeto.saude.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

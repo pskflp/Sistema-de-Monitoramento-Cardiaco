@@ -1,9 +1,9 @@
-package com.seuprojeto.saude.service;
+package ES2.MonitoramentoCardiaco.service;
+import ES2.MonitoramentoCardiaco.dto.UsuarioCreateDTO;
+import ES2.MonitoramentoCardiaco.dto.UsuarioResponseDTO;
+import ES2.MonitoramentoCardiaco.model.Usuario;
+import ES2.MonitoramentoCardiaco.repository.UsuarioRepository;
 
-import com.seuprojeto.saude.dto.UsuarioCreateDTO;
-import com.seuprojeto.saude.dto.UsuarioResponseDTO;
-import com.seuprojeto.saude.model.Usuario;
-import com.seuprojeto.saude.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
