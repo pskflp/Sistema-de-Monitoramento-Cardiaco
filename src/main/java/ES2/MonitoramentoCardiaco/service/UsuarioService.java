@@ -1,9 +1,10 @@
 package ES2.MonitoramentoCardiaco.service;
+import ES2.MonitoramentoCardiaco.dto.LoginRequestDTO;
 import ES2.MonitoramentoCardiaco.dto.UsuarioCreateDTO;
 import ES2.MonitoramentoCardiaco.dto.UsuarioResponseDTO;
 import ES2.MonitoramentoCardiaco.model.Usuario;
 import ES2.MonitoramentoCardiaco.repository.UsuarioRepository;
-
+import ES2.MonitoramentoCardiaco.dto.LoginRequestDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -51,5 +52,23 @@ public class UsuarioService {
                 usuarioSalvo.getSexo(),
                 usuarioSalvo.getPais()
         );
+    } public UsuarioResponseDTO login(LoginRequestDTO dto) {
+    Usuario usuario = usuarioRepository.findByEmail(dto.getEmail())
+            .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado."));
+
+    if (!usuario.getSenha().equals(dto.getSenha())) {
+        throw new IllegalArgumentException("Senha incorreta.");
     }
+
+    return new UsuarioResponseDTO(
+            usuario.getId(),
+            usuario.getNome(),
+            usuario.getSobrenome(),
+            usuario.getEmail(),
+            usuario.getTelefone(),
+            usuario.getDataNascimento(),
+            usuario.getSexo(),
+            usuario.getPais()
+    );
+}
 }
