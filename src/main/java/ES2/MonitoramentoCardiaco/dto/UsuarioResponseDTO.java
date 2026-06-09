@@ -1,4 +1,4 @@
-package com.seuprojeto.saude.dto;
+package ES2.MonitoramentoCardiaco.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
