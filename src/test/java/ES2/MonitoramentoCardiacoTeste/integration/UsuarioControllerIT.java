@@ -84,37 +84,31 @@ class UsuarioControllerIT {
                 .andExpect(status().isBadRequest());
     }
 
-    @Test
-    void devePropagarExcecaoQuandoSenhasNaoCoincidem() {
-        UsuarioCreateDTO dto = usuarioValido();
-        dto.setConfirmarSenha("outraSenha");
+@Test
+void deveRetornar400QuandoSenhasNaoCoincidem() throws Exception {
+    UsuarioCreateDTO dto = usuarioValido();
+    dto.setConfirmarSenha("outraSenha");
 
-        Throwable thrown = assertThrows(Throwable.class,
-                () -> mockMvc.perform(post("/usuarios/cadastro")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(dto))));
+    mockMvc.perform(post("/usuarios/cadastro")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(dto)))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.mensagem").value("As senhas não coincidem."));
+}
 
-        Throwable raiz = causaRaiz(thrown);
-        assertTrue(raiz instanceof IllegalArgumentException);
-        assertTrue(raiz.getMessage().contains("não coincidem"));
-    }
+@Test
+void deveRetornar400QuandoEmailJaCadastrado() throws Exception {
+    mockMvc.perform(post("/usuarios/cadastro")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(usuarioValido())))
+            .andExpect(status().isCreated());
 
-    @Test
-    void devePropagarExcecaoQuandoEmailJaCadastrado() throws Exception {
-        // Primeiro cadastro tem sucesso.
-        mockMvc.perform(post("/usuarios/cadastro")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(usuarioValido())))
-                .andExpect(status().isCreated());
-
-        // Segundo cadastro com o mesmo e-mail dispara IllegalArgumentException.
-        Throwable thrown = assertThrows(Throwable.class,
-                () -> mockMvc.perform(post("/usuarios/cadastro")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(usuarioValido()))));
-
-        assertTrue(causaRaiz(thrown) instanceof IllegalArgumentException);
-    }
+    mockMvc.perform(post("/usuarios/cadastro")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(usuarioValido())))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.mensagem").value("Já existe um usuário cadastrado com este e-mail."));
+}
 
     @Test
     void deveRealizarLoginComSucessoERetornar200() throws Exception {
@@ -135,22 +129,21 @@ class UsuarioControllerIT {
                 .andExpect(jsonPath("$.email").value("joao@email.com"));
     }
 
-    @Test
-    void devePropagarExcecaoQuandoSenhaIncorreta() throws Exception {
-        mockMvc.perform(post("/usuarios/cadastro")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(usuarioValido())))
-                .andExpect(status().isCreated());
+@Test
+void deveRetornar400QuandoSenhaIncorreta() throws Exception {
+    mockMvc.perform(post("/usuarios/cadastro")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(usuarioValido())))
+            .andExpect(status().isCreated());
 
-        LoginRequestDTO login = new LoginRequestDTO();
-        login.setEmail("joao@email.com");
-        login.setSenha("senhaErrada");
+    LoginRequestDTO login = new LoginRequestDTO();
+    login.setEmail("joao@email.com");
+    login.setSenha("senhaErrada");
 
-        Throwable thrown = assertThrows(Throwable.class,
-                () -> mockMvc.perform(post("/usuarios/login")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(login))));
-
-        assertTrue(causaRaiz(thrown) instanceof IllegalArgumentException);
-    }
+    mockMvc.perform(post("/usuarios/login")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(login)))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.mensagem").value("Senha incorreta."));
+}
 }
