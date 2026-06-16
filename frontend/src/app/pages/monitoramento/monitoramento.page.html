@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Monitoramento</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/relatorio">
+        <ion-icon slot="icon-only" name="analytics-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/integrantes">
+        <ion-icon slot="icon-only" name="people-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="floating">Pressão Sistólica (mmHg)</ion-label>
+    <ion-input type="number" [(ngModel)]="form.pressaoSistolica"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Pressão Diastólica (mmHg)</ion-label>
+    <ion-input type="number" [(ngModel)]="form.pressaoDiastolica"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Frequência Cardíaca (bpm)</ion-label>
+    <ion-input type="number" [(ngModel)]="form.frequenciaCardiaca"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Oxigenação (%)</ion-label>
+    <ion-input type="number" [(ngModel)]="form.oxigenacao"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Peso (kg)</ion-label>
+    <ion-input type="number" [(ngModel)]="form.peso"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-list-header>Sintomas</ion-list-header>
+    <ion-item>
+      <ion-label>Falta de ar</ion-label>
+      <ion-toggle [(ngModel)]="form.faltaDeAr"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dor no peito</ion-label>
+      <ion-toggle [(ngModel)]="form.dorNoPeito"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tontura</ion-label>
+      <ion-toggle [(ngModel)]="form.tontura"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" (click)="registrar()" style="margin-top: 20px">
+    Registrar
+  </ion-button>
+
+</ion-content>
