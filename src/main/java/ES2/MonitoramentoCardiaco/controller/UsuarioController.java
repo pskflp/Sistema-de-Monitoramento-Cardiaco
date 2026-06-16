@@ -31,16 +31,13 @@ public class UsuarioController {
     })
     @PostMapping("/cadastro")
     public ResponseEntity<UsuarioResponseDTO> cadastrar(@RequestBody @Valid UsuarioCreateDTO dto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.criarConta(dto));
+        UsuarioResponseDTO response = usuarioService.criarConta(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @Operation(summary = "Realizar login")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Login realizado com sucesso"),
-        @ApiResponse(responseCode = "400", description = "E-mail não encontrado ou senha incorreta")
-    })
     @PostMapping("/login")
     public ResponseEntity<UsuarioResponseDTO> login(@RequestBody @Valid LoginRequestDTO dto) {
-        return ResponseEntity.ok(usuarioService.login(dto));
+        UsuarioResponseDTO response = usuarioService.login(dto);
+        return ResponseEntity.ok(response);
     }
 }
