@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Relatório</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/monitoramento"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-button expand="block" (click)="carregar()">Carregar Relatório</ion-button>
+
+  <div *ngIf="relatorio">
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Resumo</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Total de registros: {{ relatorio.totalRegistros }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header><ion-card-title>Pressão Sistólica</ion-card-title></ion-card-header>
+      <ion-card-content>
+        <p>Média: {{ relatorio.pressaoSistolica.media }} mmHg</p>
+        <p>Mín: {{ relatorio.pressaoSistolica.minimo }} | Máx: {{ relatorio.pressaoSistolica.maximo }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header><ion-card-title>Frequência Cardíaca</ion-card-title></ion-card-header>
+      <ion-card-content>
+        <p>Média: {{ relatorio.frequenciaCardiaca.media }} bpm</p>
+        <p>Mín: {{ relatorio.frequenciaCardiaca.minimo }} | Máx: {{ relatorio.frequenciaCardiaca.maximo }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header><ion-card-title>Oxigenação</ion-card-title></ion-card-header>
+      <ion-card-content>
+        <p>Média: {{ relatorio.oxigenacao.media }}%</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header><ion-card-title>Alertas</ion-card-title></ion-card-header>
+      <ion-card-content>
+        <p *ngFor="let alerta of relatorio.alertas">⚠️ {{ alerta }}</p>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>
