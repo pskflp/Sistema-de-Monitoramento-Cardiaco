@@ -1,0 +1,59 @@
+.signup-container {
+  --background: #f4f5f8;
+}
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 16px;
+}
+
+.signup-card {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  margin: 0;
+}
+
+ion-card-title {
+  font-weight: 700;
+  color: #eb445a;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row ion-item {
+  flex: 1;
+}
+
+.action-button {
+  --border-radius: 8px;
+  --background: #eb445a;
+  font-weight: 600;
+  height: 48px;
+  margin-top: 24px;
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 4px;
+}
+
+ion-label {
+  font-size: 0.9rem !important;
+  color: #888 !important;
+}
+
+ion-card-header {
+  padding-bottom: 0;
+}

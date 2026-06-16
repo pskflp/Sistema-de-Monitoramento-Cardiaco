@@ -1,65 +1,79 @@
-<ion-header>
-  <ion-toolbar color="danger">
+<ion-header class="ion-no-border">
+  <ion-toolbar color="white">
     <ion-title>Monitoramento</ion-title>
     <ion-buttons slot="primary">
       <ion-button routerLink="/relatorio">
-        <ion-icon slot="icon-only" name="analytics-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="analytics-outline" color="danger"></ion-icon>
       </ion-button>
       <ion-button routerLink="/integrantes">
-        <ion-icon slot="icon-only" name="people-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="people-outline" color="dark"></ion-icon>
       </ion-button>
       <ion-button (click)="logout()">
-        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="log-out-outline" color="dark"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="monitoring-container">
+  <div class="center-wrapper">
+    <ion-card class="form-card">
+      <ion-card-header>
+        <ion-card-title>Novo Registro</ion-card-title>
+        <ion-card-subtitle>Insira seus sinais vitais abaixo</ion-card-subtitle>
+      </ion-card-header>
 
-  <ion-item>
-    <ion-label position="floating">Pressão Sistólica (mmHg)</ion-label>
-    <ion-input type="number" [(ngModel)]="form.pressaoSistolica"></ion-input>
-  </ion-item>
+      <ion-card-content>
+        <div class="input-grid">
+          <ion-item lines="none" class="custom-item">
+            <ion-label position="stacked">Sistólica (mmHg)</ion-label>
+            <ion-input type="number" [(ngModel)]="form.pressaoSistolica" placeholder="120"></ion-input>
+          </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Pressão Diastólica (mmHg)</ion-label>
-    <ion-input type="number" [(ngModel)]="form.pressaoDiastolica"></ion-input>
-  </ion-item>
+          <ion-item lines="none" class="custom-item">
+            <ion-label position="stacked">Diastólica (mmHg)</ion-label>
+            <ion-input type="number" [(ngModel)]="form.pressaoDiastolica" placeholder="80"></ion-input>
+          </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Frequência Cardíaca (bpm)</ion-label>
-    <ion-input type="number" [(ngModel)]="form.frequenciaCardiaca"></ion-input>
-  </ion-item>
+          <ion-item lines="none" class="custom-item">
+            <ion-label position="stacked">FC (bpm)</ion-label>
+            <ion-input type="number" [(ngModel)]="form.frequenciaCardiaca" placeholder="75"></ion-input>
+          </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Oxigenação (%)</ion-label>
-    <ion-input type="number" [(ngModel)]="form.oxigenacao"></ion-input>
-  </ion-item>
+          <ion-item lines="none" class="custom-item">
+            <ion-label position="stacked">O2 (%)</ion-label>
+            <ion-input type="number" [(ngModel)]="form.oxigenacao" placeholder="98"></ion-input>
+          </ion-item>
+        </div>
 
-  <ion-item>
-    <ion-label position="floating">Peso (kg)</ion-label>
-    <ion-input type="number" [(ngModel)]="form.peso"></ion-input>
-  </ion-item>
+        <ion-item lines="none" class="custom-item ion-margin-top">
+          <ion-label position="stacked">Peso (kg)</ion-label>
+          <ion-input type="number" [(ngModel)]="form.peso" placeholder="70.5"></ion-input>
+        </ion-item>
 
-  <ion-list>
-    <ion-list-header>Sintomas</ion-list-header>
-    <ion-item>
-      <ion-label>Falta de ar</ion-label>
-      <ion-toggle [(ngModel)]="form.faltaDeAr"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Dor no peito</ion-label>
-      <ion-toggle [(ngModel)]="form.dorNoPeito"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Tontura</ion-label>
-      <ion-toggle [(ngModel)]="form.tontura"></ion-toggle>
-    </ion-item>
-  </ion-list>
+        <div class="symptoms-section">
+          <h3 class="section-title">Sintomas</h3>
+          
+          <ion-item lines="none" class="toggle-item">
+            <ion-label>Falta de ar</ion-label>
+            <ion-toggle [(ngModel)]="form.faltaDeAr" color="danger"></ion-toggle>
+          </ion-item>
 
-  <ion-button expand="block" (click)="registrar()" style="margin-top: 20px">
-    Registrar
-  </ion-button>
+          <ion-item lines="none" class="toggle-item">
+            <ion-label>Dor no peito</ion-label>
+            <ion-toggle [(ngModel)]="form.dorNoPeito" color="danger"></ion-toggle>
+          </ion-item>
 
+          <ion-item lines="none" class="toggle-item">
+            <ion-label>Tontura</ion-label>
+            <ion-toggle [(ngModel)]="form.tontura" color="danger"></ion-toggle>
+          </ion-item>
+        </div>
+
+        <ion-button expand="block" (click)="registrar()" class="action-button">
+          Salvar Registro
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

@@ -1,54 +1,69 @@
-<ion-header>
-  <ion-toolbar color="danger">
-    <ion-title>Criar Conta</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/login"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="signup-container">
+  <div class="center-wrapper">
+    <ion-card class="signup-card">
+      <ion-card-header>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/login" text="" color="danger"></ion-back-button>
+        </ion-buttons>
+        <ion-card-title class="ion-text-center">Nova Conta</ion-card-title>
+      </ion-card-header>
 
-<ion-content class="ion-padding">
+      <ion-card-content>
+        <div class="form-row">
+          <ion-item lines="full">
+            <ion-label position="floating">Nome</ion-label>
+            <ion-input [(ngModel)]="form.nome"></ion-input>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Sobrenome</ion-label>
+            <ion-input [(ngModel)]="form.sobrenome"></ion-input>
+          </ion-item>
+        </div>
 
-  <ion-item>
-    <ion-label position="floating">Nome</ion-label>
-    <ion-input [(ngModel)]="form.nome"></ion-input>
-  </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input type="email" [(ngModel)]="form.email"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Sobrenome</ion-label>
-    <ion-input [(ngModel)]="form.sobrenome"></ion-input>
-  </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Telefone</ion-label>
+          <ion-input type="tel" [(ngModel)]="form.telefone" placeholder="(00) 00000-0000"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">E-mail</ion-label>
-    <ion-input type="email" [(ngModel)]="form.email"></ion-input>
-  </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Data de Nascimento</ion-label>
+          <ion-input type="date" [(ngModel)]="form.dataNascimento"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Telefone</ion-label>
-    <ion-input type="tel" [(ngModel)]="form.telefone"></ion-input>
-  </ion-item>
+        <div class="form-row">
+          <ion-item lines="full">
+            <ion-label position="floating">Sexo</ion-label>
+            <ion-select [(ngModel)]="form.sexo" interface="popover">
+              <ion-select-option value="M">Masc</ion-select-option>
+              <ion-select-option value="F">Fem</ion-select-option>
+              <ion-select-option value="Outro">Outro</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">País</ion-label>
+            <ion-input [(ngModel)]="form.pais"></ion-input>
+          </ion-item>
+        </div>
 
-  <ion-item>
-    <ion-label position="floating">Senha</ion-label>
-    <ion-input type="password" [(ngModel)]="form.senha"></ion-input>
-  </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Senha (mín. 8 chars)</ion-label>
+          <ion-input type="password" [(ngModel)]="form.senha"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Confirmar Senha</ion-label>
-    <ion-input type="password" [(ngModel)]="form.confirmarSenha"></ion-input>
-  </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Confirmar Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="form.confirmarSenha"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Data de Nascimento</ion-label>
-    <ion-input type="date" [(ngModel)]="form.dataNascimento"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Sexo</ion-label>
-    <ion-select [(ngModel)]="form.sexo" placeholder="Selecione">
-      <ion-select-option value="M">Masculino</ion-select-option>
-      <ion-select-option value="F">Feminino</ion-select-option>
-      <ion-select-option value="Outro">Outro</ion-select-option>
-    </ion-select>
-  </ion-item>
+        <ion-button expand="block" (click)="cadastrar()" class="ion-margin-top action-button">
+          Criar Cadastro
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

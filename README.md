@@ -146,54 +146,26 @@ src
 
 ## Como executar
 
-### Back-end (Spring Boot)
+### Pré-requisitos
 
-1. **Pré-requisitos**: Java 17+ instalado.
-2. **Executar**: 
-   ```bash
-   ./mvnw spring-boot:run
-   ```
-   A API estará disponível em `http://localhost:8080`.
+- Java 17 instalado.
 
-### Front-end (Ionic/Angular)
+Não é necessário instalar nenhum banco de dados. A aplicação usa o H2 em memória, criado
+automaticamente na inicialização, o que permite executar o projeto em qualquer máquina sem
+configuração adicional.
 
-1. **Pré-requisitos**: Node.js instalado e Ionic CLI (`npm install -g @ionic/cli`).
-2. **Instalar dependências**:
-   ```bash
-   cd frontend
-   npm install
-   ```
-3. **Executar em modo desenvolvimento**:
-   ```bash
-   ionic serve
-   ```
-   O app abrirá no navegador em `http://localhost:8100`.
+### Subir a aplicação
 
-### Geração de APK (Android)
+```
+./mvnw spring-boot:run
+```
 
-Para gerar o APK e testar em um dispositivo real:
+A aplicação fica disponível em `http://localhost:8080`.
 
-1. **Configurar o IP do Back-end**: No arquivo `frontend/src/environments/environment.prod.ts`, altere o `apiUrl` de `localhost` para o **IP da sua máquina** na rede local (ex: `http://192.168.1.50:8080`).
-2. **Build do projeto**:
-   ```bash
-   ionic build
-   ```
-3. **Sincronizar com Capacitor**:
-   ```bash
-   npx cap sync android
-   ```
-4. **Abrir no Android Studio**:
-   ```bash
-   npx cap open android
-   ```
-5. **Gerar o APK**: No Android Studio, vá em `Build > Build Bundle(s) / APK(s) > Build APK(s)`.
-
-## Integrantes do Grupo
-
-- Rafael Kawakubo
-- Raphael Esch
-- Victor
-- João Vítor
+Observação sobre os dados: por ser um banco em memória, todos os registros são reiniciados
+sempre que a aplicação é parada. O console web do H2 (para inspecionar as tabelas durante a
+execução) fica disponível em `http://localhost:8080/h2-console` (JDBC URL
+`jdbc:h2:mem:monitoramento`, usuário `sa`, senha em branco).
 
 ## Documentação da API (Swagger)
 
