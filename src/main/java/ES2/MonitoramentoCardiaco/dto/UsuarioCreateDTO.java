@@ -30,7 +30,7 @@ public class UsuarioCreateDTO {
     private String telefone;
 
     @NotBlank(message = "A senha é obrigatória.")
-    @Size(min = 8, message = "A senha deve ter pelo menos 6 caracteres.")
+    @Size(min = 8, message = "A senha deve ter pelo menos 8 caracteres.")
     private String senha;
 
     @NotBlank(message = "A confirmação de senha é obrigatória.")
