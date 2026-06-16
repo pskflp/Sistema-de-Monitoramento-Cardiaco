@@ -1,102 +1,40 @@
-.login-container {
-  /* Fundo cinza bem claro/neutro */
-  --background: #f4f7f6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Container principal para garantir centralização absoluta */
-.center-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
 .login-card {
-  /* Tamanho pequeno e fixo para não preencher a tela */
-  width: 90%;
-  max-width: 320px;
-  
+  width: 100%;
+  max-width: 340px;
   background: #ffffff;
   border-radius: 12px;
-  padding: 16px;
-  
-  /* Sombra leve e profissional */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  
-  /* Borda sutil */
-  border: 1px solid #e0e0e0;
-  
+  box-shadow: var(--app-card-shadow);
+  padding: 20px 0;
+  border: 1px solid #f1f3f5;
+}
+
+.main-title {
   margin: 0;
+  font-weight: 800;
+  color: var(--app-danger);
+  font-size: 1.8rem;
+  letter-spacing: -1px;
 }
 
-ion-card-title {
-  font-weight: 700;
-  color: #eb445a; /* Vermelho (identidade cardíaca) */
-  font-size: 1.4rem;
-  margin-bottom: 4px;
-}
-
-ion-card-subtitle {
-  color: #666666; /* Cinza escuro */
-  font-size: 0.85rem;
-  margin-bottom: 20px;
-}
-
-/* Estilo dos campos de input */
-ion-item {
-  --background: #f9f9f9;
-  --border-radius: 8px;
-  --padding-start: 12px;
-  --highlight-height: 0;
-  margin-bottom: 12px;
-  border: 1px solid #eeeeee;
-}
-
-ion-input {
+.main-subtitle {
+  margin: 4px 0 0 0;
+  color: var(--app-subtitle-color);
   font-size: 0.95rem;
-  color: #333333;
 }
 
-/* Botão principal - Grafite com texto branco */
-.action-button {
-  --background: #333333; /* Grafite */
+.btn-primary {
+  --background: var(--app-graphite);
   --color: #ffffff;
   --border-radius: 8px;
-  font-weight: 600;
-  height: 46px;
-  margin-top: 10px;
+  height: 52px;
+  font-weight: 700;
+  margin-top: 20px;
   --box-shadow: none;
 }
 
-/* Divisor neutro */
-.divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 16px 0;
-  color: #aaaaaa;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-}
-
-.divider::before, .divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid #eeeeee;
-}
-
-.divider:not(:empty)::before { margin-right: 1em; }
-.divider:not(:empty)::after { margin-left: 1em; }
-
-/* Botão de cadastro - Vermelho sutil */
-.signup-button {
-  --color: #eb445a;
-  font-weight: 500;
+.btn-link {
+  --color: var(--app-subtitle-color);
   font-size: 0.85rem;
-  --padding-top: 0;
-  --padding-bottom: 0;
+  margin-top: 10px;
+  text-transform: none;
 }

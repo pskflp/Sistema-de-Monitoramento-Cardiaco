@@ -1,30 +1,30 @@
-<ion-content class="login-container">
+<ion-content scroll-y="false">
   <div class="center-wrapper">
-    <ion-card class="login-card">
-      <div class="ion-text-center ion-padding-top">
-        <ion-card-title>Monitoramento</ion-card-title>
-        <ion-card-subtitle>Acesse sua conta</ion-card-subtitle>
+    <div class="login-card">
+      <div class="ion-text-center ion-padding">
+        <h1 class="main-title">Acesso</h1>
+        <p class="main-subtitle">Monitore sua saúde cardíaca</p>
       </div>
 
-      <ion-card-content class="ion-no-padding ion-padding-top">
-        <ion-item lines="none">
-          <ion-input type="email" [(ngModel)]="email" placeholder="E-mail"></ion-input>
+      <div class="ion-padding-horizontal">
+        <ion-item lines="none" class="visible-input">
+          <ion-label position="stacked">E-mail</ion-label>
+          <ion-input type="email" [(ngModel)]="email" placeholder="nome@email.com"></ion-input>
         </ion-item>
 
-        <ion-item lines="none">
-          <ion-input type="password" [(ngModel)]="senha" placeholder="Senha"></ion-input>
+        <ion-item lines="none" class="visible-input">
+          <ion-label position="stacked">Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="senha" placeholder="Sua senha"></ion-input>
         </ion-item>
 
-        <ion-button expand="block" (click)="login()" class="action-button">
+        <ion-button expand="block" (click)="login()" class="btn-primary">
           Entrar
         </ion-button>
 
-        <div class="divider">ou</div>
-
-        <ion-button expand="block" fill="clear" routerLink="/cadastro" class="signup-button">
-          Criar nova conta
+        <ion-button expand="block" fill="clear" routerLink="/cadastro" class="btn-link">
+          Ainda não tem conta? Cadastre-se
         </ion-button>
-      </ion-card-content>
-    </ion-card>
+      </div>
+    </div>
   </div>
 </ion-content>

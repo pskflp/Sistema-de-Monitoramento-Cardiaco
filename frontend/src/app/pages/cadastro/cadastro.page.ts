@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonicModule, AlertController } from '@ionic/angular';
+import { AlertController, IonContent, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption, IonButton } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api';
@@ -8,8 +8,9 @@ import { ApiService } from '../../services/api';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.page.html',
+  styleUrl: './cadastro.page.scss',
   standalone: true,
-  imports: [IonicModule, FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, IonContent, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption, IonButton],
 })
 export class CadastroPage {
   form = {

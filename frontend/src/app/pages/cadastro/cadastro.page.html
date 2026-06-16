@@ -1,69 +1,71 @@
-<ion-content [fullscreen]="true" class="signup-container">
+<ion-content>
   <div class="center-wrapper">
-    <ion-card class="signup-card">
-      <ion-card-header>
-        <ion-buttons slot="start">
-          <ion-back-button defaultHref="/login" text="" color="danger"></ion-back-button>
-        </ion-buttons>
-        <ion-card-title class="ion-text-center">Nova Conta</ion-card-title>
-      </ion-card-header>
+    <div class="signup-card modern-card">
+      <div class="ion-text-center ion-padding">
+        <h2 class="title">Nova Conta</h2>
+        <p class="subtitle">Cadastre-se para monitorar sua saúde</p>
+      </div>
 
-      <ion-card-content>
+      <div class="ion-padding-horizontal">
         <div class="form-row">
-          <ion-item lines="full">
-            <ion-label position="floating">Nome</ion-label>
-            <ion-input [(ngModel)]="form.nome"></ion-input>
+          <ion-item lines="none" class="visible-input">
+            <ion-label position="stacked">Nome</ion-label>
+            <ion-input [(ngModel)]="form.nome" placeholder="Ex: João"></ion-input>
           </ion-item>
-          <ion-item lines="full">
-            <ion-label position="floating">Sobrenome</ion-label>
-            <ion-input [(ngModel)]="form.sobrenome"></ion-input>
+          <ion-item lines="none" class="visible-input">
+            <ion-label position="stacked">Sobrenome</ion-label>
+            <ion-input [(ngModel)]="form.sobrenome" placeholder="Ex: Silva"></ion-input>
           </ion-item>
         </div>
 
-        <ion-item lines="full">
-          <ion-label position="floating">E-mail</ion-label>
-          <ion-input type="email" [(ngModel)]="form.email"></ion-input>
+        <ion-item lines="none" class="visible-input">
+          <ion-label position="stacked">E-mail</ion-label>
+          <ion-input type="email" [(ngModel)]="form.email" placeholder="seu@email.com"></ion-input>
         </ion-item>
 
-        <ion-item lines="full">
-          <ion-label position="floating">Telefone</ion-label>
+        <ion-item lines="none" class="visible-input">
+          <ion-label position="stacked">Telefone</ion-label>
           <ion-input type="tel" [(ngModel)]="form.telefone" placeholder="(00) 00000-0000"></ion-input>
         </ion-item>
 
-        <ion-item lines="full">
-          <ion-label position="floating">Data de Nascimento</ion-label>
+        <ion-item lines="none" class="visible-input">
+          <ion-label position="stacked">Data de Nascimento</ion-label>
           <ion-input type="date" [(ngModel)]="form.dataNascimento"></ion-input>
         </ion-item>
 
         <div class="form-row">
-          <ion-item lines="full">
-            <ion-label position="floating">Sexo</ion-label>
-            <ion-select [(ngModel)]="form.sexo" interface="popover">
-              <ion-select-option value="M">Masc</ion-select-option>
-              <ion-select-option value="F">Fem</ion-select-option>
+          <ion-item lines="none" class="visible-input">
+            <ion-label position="stacked">Sexo</ion-label>
+            <ion-select [(ngModel)]="form.sexo" interface="popover" placeholder="Selecione">
+              <ion-select-option value="M">Masculino</ion-select-option>
+              <ion-select-option value="F">Feminino</ion-select-option>
               <ion-select-option value="Outro">Outro</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-item lines="full">
-            <ion-label position="floating">País</ion-label>
-            <ion-input [(ngModel)]="form.pais"></ion-input>
+          <ion-item lines="none" class="visible-input">
+            <ion-label position="stacked">País</ion-label>
+            <ion-input [(ngModel)]="form.pais" placeholder="Ex: Brasil"></ion-input>
           </ion-item>
         </div>
 
-        <ion-item lines="full">
-          <ion-label position="floating">Senha (mín. 8 chars)</ion-label>
-          <ion-input type="password" [(ngModel)]="form.senha"></ion-input>
+        <ion-item lines="none" class="visible-input">
+          <ion-label position="stacked">Senha (mín. 8 chars)</ion-label>
+          <ion-input type="password" [(ngModel)]="form.senha" placeholder="********"></ion-input>
         </ion-item>
 
-        <ion-item lines="full">
-          <ion-label position="floating">Confirmar Senha</ion-label>
-          <ion-input type="password" [(ngModel)]="form.confirmarSenha"></ion-input>
+        <ion-item lines="none" class="visible-input">
+          <ion-label position="stacked">Confirmar Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="form.confirmarSenha" placeholder="********"></ion-input>
         </ion-item>
 
-        <ion-button expand="block" (click)="cadastrar()" class="ion-margin-top action-button">
+        <ion-button expand="block" (click)="cadastrar()" class="btn-primary">
           Criar Cadastro
         </ion-button>
-      </ion-card-content>
-    </ion-card>
+
+        <ion-button expand="block" fill="clear" routerLink="/login" class="btn-link">
+          Já tem conta? Faça login
+        </ion-button>
+      </div>
+    </div>
   </div>
 </ion-content>

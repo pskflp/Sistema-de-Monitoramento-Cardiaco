@@ -1,7 +1,7 @@
-<ion-header class="ion-no-border">
+<ion-header>
   <ion-toolbar color="white">
     <ion-title>Monitoramento</ion-title>
-    <ion-buttons slot="primary">
+    <ion-buttons slot="end">
       <ion-button routerLink="/relatorio">
         <ion-icon slot="icon-only" name="analytics-outline" color="danger"></ion-icon>
       </ion-button>
@@ -15,65 +15,75 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="monitoring-container">
+<ion-content>
   <div class="center-wrapper">
-    <ion-card class="form-card">
-      <ion-card-header>
-        <ion-card-title>Novo Registro</ion-card-title>
-        <ion-card-subtitle>Insira seus sinais vitais abaixo</ion-card-subtitle>
-      </ion-card-header>
+    <div class="form-card">
+      <div class="ion-text-center ion-padding">
+        <h2 class="form-title">Novo Registro</h2>
+        <p class="form-subtitle">Informe seus dados vitais atuais</p>
+      </div>
 
-      <ion-card-content>
-        <div class="input-grid">
-          <ion-item lines="none" class="custom-item">
-            <ion-label position="stacked">Sistólica (mmHg)</ion-label>
-            <ion-input type="number" [(ngModel)]="form.pressaoSistolica" placeholder="120"></ion-input>
-          </ion-item>
+      <div class="ion-padding-horizontal">
+        
+        <div class="section-title" style="font-size: 0.8rem; font-weight: 700; color: #495057; text-transform: uppercase; margin-bottom: 12px;">
+          Sinais Vitais
+        </div>
 
-          <ion-item lines="none" class="custom-item">
-            <ion-label position="stacked">Diastólica (mmHg)</ion-label>
-            <ion-input type="number" [(ngModel)]="form.pressaoDiastolica" placeholder="80"></ion-input>
-          </ion-item>
+        <div class="grid-row">
+          <div style="flex: 1; background: #f8f9fa; padding: 4px 12px; border-radius: 8px;">
+            <ion-item lines="none" style="--background: transparent; --padding-start: 0;">
+              <ion-input label="Sistólica (mmHg)" labelPlacement="stacked" type="number" [(ngModel)]="form.pressaoSistolica" placeholder="120" style="font-weight: 700;"></ion-input>
+            </ion-item>
+          </div>
+          <div style="flex: 1; background: #f8f9fa; padding: 4px 12px; border-radius: 8px;">
+            <ion-item lines="none" style="--background: transparent; --padding-start: 0;">
+              <ion-input label="Diastólica (mmHg)" labelPlacement="stacked" type="number" [(ngModel)]="form.pressaoDiastolica" placeholder="80" style="font-weight: 700;"></ion-input>
+            </ion-item>
+          </div>
+        </div>
 
-          <ion-item lines="none" class="custom-item">
-            <ion-label position="stacked">FC (bpm)</ion-label>
-            <ion-input type="number" [(ngModel)]="form.frequenciaCardiaca" placeholder="75"></ion-input>
-          </ion-item>
+        <div class="grid-row" style="margin-top: 12px;">
+          <div style="flex: 1; background: #f8f9fa; padding: 4px 12px; border-radius: 8px;">
+            <ion-item lines="none" style="--background: transparent; --padding-start: 0;">
+              <ion-input label="Frequência (bpm)" labelPlacement="stacked" type="number" [(ngModel)]="form.frequenciaCardiaca" placeholder="75" style="font-weight: 700;"></ion-input>
+            </ion-item>
+          </div>
+          <div style="flex: 1; background: #f8f9fa; padding: 4px 12px; border-radius: 8px;">
+            <ion-item lines="none" style="--background: transparent; --padding-start: 0;">
+              <ion-input label="Oxigênio (%)" labelPlacement="stacked" type="number" [(ngModel)]="form.oxigenacao" placeholder="98" style="font-weight: 700;"></ion-input>
+            </ion-item>
+          </div>
+        </div>
 
-          <ion-item lines="none" class="custom-item">
-            <ion-label position="stacked">O2 (%)</ion-label>
-            <ion-input type="number" [(ngModel)]="form.oxigenacao" placeholder="98"></ion-input>
+        <div style="margin-top: 12px; background: #f8f9fa; padding: 4px 12px; border-radius: 8px;">
+          <ion-item lines="none" style="--background: transparent; --padding-start: 0;">
+            <ion-input label="Peso (kg)" labelPlacement="stacked" type="number" [(ngModel)]="form.peso" placeholder="70.0" style="font-weight: 700;"></ion-input>
           </ion-item>
         </div>
 
-        <ion-item lines="none" class="custom-item ion-margin-top">
-          <ion-label position="stacked">Peso (kg)</ion-label>
-          <ion-input type="number" [(ngModel)]="form.peso" placeholder="70.5"></ion-input>
-        </ion-item>
-
-        <div class="symptoms-section">
-          <h3 class="section-title">Sintomas</h3>
+        <div class="symptoms-section" style="margin-top: 24px;">
+          <div class="section-title" style="color: var(--app-danger); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; display: flex; align-items: center; gap: 4px;">
+            <ion-icon name="warning-outline"></ion-icon>
+            Atenção Médica / Sintomas
+          </div>
           
-          <ion-item lines="none" class="toggle-item">
-            <ion-label>Falta de ar</ion-label>
-            <ion-toggle [(ngModel)]="form.faltaDeAr" color="danger"></ion-toggle>
-          </ion-item>
-
-          <ion-item lines="none" class="toggle-item">
-            <ion-label>Dor no peito</ion-label>
-            <ion-toggle [(ngModel)]="form.dorNoPeito" color="danger"></ion-toggle>
-          </ion-item>
-
-          <ion-item lines="none" class="toggle-item">
-            <ion-label>Tontura</ion-label>
-            <ion-toggle [(ngModel)]="form.tontura" color="danger"></ion-toggle>
-          </ion-item>
+          <div class="toggle-list">
+            <ion-item lines="none">
+              <ion-toggle justify="space-between" [(ngModel)]="form.faltaDeAr">Falta de ar</ion-toggle>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-toggle justify="space-between" [(ngModel)]="form.dorNoPeito">Dor no peito</ion-toggle>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-toggle justify="space-between" [(ngModel)]="form.tontura">Tontura</ion-toggle>
+            </ion-item>
+          </div>
         </div>
 
-        <ion-button expand="block" (click)="registrar()" class="action-button">
-          Salvar Registro
+        <ion-button expand="block" (click)="registrar()" class="btn-submit ion-margin-vertical">
+          Salvar Dados
         </ion-button>
-      </ion-card-content>
-    </ion-card>
+      </div>
+    </div>
   </div>
 </ion-content>
