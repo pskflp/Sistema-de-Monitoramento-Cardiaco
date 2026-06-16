@@ -1,0 +1,193 @@
+.report-container {
+  --background: #f4f7f6;
+}
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100%;
+  padding: 16px 12px;
+}
+
+.report-content {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Card de Alertas - Estilo Urgente */
+.alert-card {
+  --background: #eb445a;
+  color: #fff;
+  border-radius: 16px;
+  margin: 0 0 20px 0;
+  box-shadow: 0 8px 20px rgba(235, 68, 90, 0.3);
+
+  ion-card-title {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    ion-icon { margin-right: 8px; font-size: 1.4rem; }
+  }
+
+  .alert-item {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    border-left: 3px solid rgba(255,255,255,0.5);
+    padding-left: 10px;
+  }
+}
+
+/* Cards de Insights */
+.insight-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #eef0f2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  margin: 0 0 16px 0;
+
+  ion-card-title {
+    font-weight: 700;
+    color: #333;
+    font-size: 1.1rem;
+  }
+
+  ion-card-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.7rem;
+    color: #999;
+  }
+}
+
+/* Resumo em Grid */
+.summary-card {
+  .summary-grid {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+
+  .summary-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .value { font-size: 1.6rem; font-weight: 800; color: #333; }
+    .label { font-size: 0.75rem; color: #888; text-transform: uppercase; margin-top: 4px; }
+  }
+}
+
+/* Visualização de Pressão */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+
+  .stat-val { font-size: 1rem; font-weight: 700; color: #666; }
+  .stat-lab { font-size: 0.65rem; color: #999; text-transform: uppercase; }
+
+  &.main {
+    .stat-val { font-size: 1.8rem; color: #eb445a; line-height: 1; }
+    .stat-lab { color: #eb445a; font-weight: 700; margin-top: 4px; }
+  }
+}
+
+.health-bar-container {
+  height: 6px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.health-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #eb445a, #ff4961);
+  border-radius: 3px;
+}
+
+/* Visualização de Batimentos */
+.heart-rate-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+
+  .heart-icon {
+    font-size: 3rem;
+    color: #eb445a;
+    margin-right: 15px;
+    animation: pulse 1.5s infinite;
+  }
+
+  .hr-value {
+    display: flex;
+    flex-direction: column;
+    .big-val { font-size: 2.2rem; font-weight: 800; color: #333; line-height: 1; }
+    .unit { font-size: 0.8rem; color: #888; }
+  }
+}
+
+.hr-range {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 10px;
+}
+
+/* Oxigenação */
+.o2-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.o2-badge {
+  background: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  &.danger { background: #eb445a; }
+}
+
+/* Estados de carregamento e rodapé */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+  p { margin-top: 15px; color: #999; }
+}
+
+.footer-note {
+  padding: 20px;
+  text-align: center;
+  p { font-size: 0.75rem; color: #bbb; font-style: italic; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Ajuste do Toolbar */
+ion-toolbar {
+  --background: #ffffff;
+  padding: 0 10px;
+  ion-title { font-weight: 700; color: #333; font-size: 1rem; }
+}

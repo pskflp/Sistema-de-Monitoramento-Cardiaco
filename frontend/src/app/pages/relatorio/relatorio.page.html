@@ -1,55 +1,116 @@
-<ion-header>
-  <ion-toolbar color="danger">
-    <ion-title>Relatório</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="white">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/monitoramento"></ion-back-button>
+      <ion-back-button defaultHref="/monitoramento" text="" color="dark"></ion-back-button>
     </ion-buttons>
+    <ion-title>Relatório de Saúde</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="report-container">
+  <div class="center-wrapper">
+    <div class="report-content" *ngIf="relatorio">
+      
+      <!-- Card de Alertas (Só aparece se houver alertas) -->
+      <ion-card class="alert-card" *ngIf="relatorio.alertas && relatorio.alertas.length > 0">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-icon name="warning-outline"></ion-icon> Atenção Médica
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p *ngFor="let alerta of relatorio.alertas" class="alert-item">
+            {{ alerta }}
+          </p>
+        </ion-card-content>
+      </ion-card>
 
-  <div *ngIf="relatorio">
+      <!-- Resumo Geral -->
+      <ion-card class="insight-card summary-card">
+        <ion-card-content>
+          <div class="summary-grid">
+            <div class="summary-item">
+              <span class="value">{{ relatorio.totalRegistros }}</span>
+              <span class="label">Registros</span>
+            </div>
+            <div class="summary-item">
+              <span class="value">{{ relatorio.pressaoSistolica.media | number:'1.0-0' }}/{{ relatorio.pressaoDiastolica?.media || 80 | number:'1.0-0' }}</span>
+              <span class="label">Média Pressão</span>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Resumo</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Total de registros: {{ relatorio.totalRegistros }}</p>
-      </ion-card-content>
-    </ion-card>
+      <!-- Gráfico/Insight de Pressão -->
+      <ion-card class="insight-card">
+        <ion-card-header>
+          <ion-card-subtitle>Pressão Arterial</ion-card-subtitle>
+          <ion-card-title>Variação Sistólica</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="stat-row">
+            <div class="stat-box">
+              <span class="stat-val min">{{ relatorio.pressaoSistolica.minimo }}</span>
+              <span class="stat-lab">Mínimo</span>
+            </div>
+            <div class="stat-box main">
+              <span class="stat-val avg">{{ relatorio.pressaoSistolica.media | number:'1.1-1' }}</span>
+              <span class="stat-lab">Média (mmHg)</span>
+            </div>
+            <div class="stat-box max">
+              <span class="stat-val high">{{ relatorio.pressaoSistolica.maximo }}</span>
+              <span class="stat-lab">Máximo</span>
+            </div>
+          </div>
+          <div class="health-bar-container">
+            <div class="health-bar" [style.width.%]="(relatorio.pressaoSistolica.media / 200) * 100"></div>
+          </div>
+        </ion-card-content>
+      </ion-card>
 
-    <ion-card>
-      <ion-card-header><ion-card-title>Pressão Sistólica</ion-card-title></ion-card-header>
-      <ion-card-content>
-        <p>Média: {{ relatorio.pressaoSistolica.media }} mmHg</p>
-        <p>Mín: {{ relatorio.pressaoSistolica.minimo }} | Máx: {{ relatorio.pressaoSistolica.maximo }}</p>
-      </ion-card-content>
-    </ion-card>
+      <!-- Frequência Cardíaca -->
+      <ion-card class="insight-card">
+        <ion-card-header>
+          <ion-card-subtitle>Batimentos</ion-card-subtitle>
+          <ion-card-title>Frequência Cardíaca</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="heart-rate-display">
+            <ion-icon name="heart" class="heart-icon"></ion-icon>
+            <div class="hr-value">
+              <span class="big-val">{{ relatorio.frequenciaCardiaca.media | number:'1.0-0' }}</span>
+              <span class="unit">bpm (média)</span>
+            </div>
+          </div>
+          <p class="hr-range">Intervalo registrado: {{ relatorio.frequenciaCardiaca.minimo }} - {{ relatorio.frequenciaCardiaca.maximo }} bpm</p>
+        </ion-card-content>
+      </ion-card>
 
-    <ion-card>
-      <ion-card-header><ion-card-title>Frequência Cardíaca</ion-card-title></ion-card-header>
-      <ion-card-content>
-        <p>Média: {{ relatorio.frequenciaCardiaca.media }} bpm</p>
-        <p>Mín: {{ relatorio.frequenciaCardiaca.minimo }} | Máx: {{ relatorio.frequenciaCardiaca.maximo }}</p>
-      </ion-card-content>
-    </ion-card>
+      <!-- Oxigenação -->
+      <ion-card class="insight-card o2-card">
+        <ion-card-content>
+          <div class="o2-flex">
+            <div>
+              <ion-card-subtitle>Nível de Oxigênio</ion-card-subtitle>
+              <ion-card-title>Oxigenação (SpO2)</ion-card-title>
+            </div>
+            <div class="o2-badge" [class.danger]="relatorio.oxigenacao.media < 95">
+              {{ relatorio.oxigenacao.media | number:'1.1-1' }}%
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
 
-    <ion-card>
-      <ion-card-header><ion-card-title>Oxigenação</ion-card-title></ion-card-header>
-      <ion-card-content>
-        <p>Média: {{ relatorio.oxigenacao.media }}%</p>
-      </ion-card-content>
-    </ion-card>
+      <div class="footer-note">
+        <p>* Estes dados são para fins informativo. Consulte sempre um médico.</p>
+      </div>
 
-    <ion-card>
-      <ion-card-header><ion-card-title>Alertas</ion-card-title></ion-card-header>
-      <ion-card-content>
-        <p *ngFor="let alerta of relatorio.alertas">⚠️ {{ alerta }}</p>
-      </ion-card-content>
-    </ion-card>
+    </div>
 
+    <!-- Skeleton Loading ou Estado Vazio -->
+    <div class="empty-state" *ngIf="!relatorio">
+      <ion-spinner name="crescent" color="danger"></ion-spinner>
+      <p>Gerando seu relatório médico...</p>
+    </div>
   </div>
-
 </ion-content>
