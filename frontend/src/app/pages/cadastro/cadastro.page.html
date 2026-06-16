@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Criar Conta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input [(ngModel)]="form.nome"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Sobrenome</ion-label>
+    <ion-input [(ngModel)]="form.sobrenome"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input type="email" [(ngModel)]="form.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Telefone</ion-label>
+    <ion-input type="tel" [(ngModel)]="form.telefone"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password" [(ngModel)]="form.senha"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Confirmar Senha</ion-label>
+    <ion-input type="password" [(ngModel)]="form.confirmarSenha"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Data de Nascimento</ion-label>
+    <ion-input type="date" [(ngModel)]="form.dataNascimento"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Sexo</ion-label>
+    <ion-select [(ngModel)]="form.sexo" placeholder="Selecione">
+      <ion-select-option value="M">Masculino</ion-select-option>
+      <ion-select-option value="F">Feminino</ion-select-option>
+      <ion-select-option value="Outro">Outro</ion-select-option>
+    </ion-select>
+  </ion-item>
