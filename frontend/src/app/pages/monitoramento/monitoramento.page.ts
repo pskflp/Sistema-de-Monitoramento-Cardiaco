@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
-import { IonicModule, AlertController } from '@ionic/angular';
+import { AlertController, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonContent, IonItem, IonLabel, IonInput, IonToggle } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api';
 
+import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { analyticsOutline, peopleOutline, logOutOutline } from 'ionicons/icons';
+
 @Component({
   selector: 'app-monitoramento',
   templateUrl: './monitoramento.page.html',
+  styleUrl: './monitoramento.page.scss',
   standalone: true,
-  imports: [IonicModule, FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonContent, IonItem, IonLabel, IonInput, IonToggle],
 })
 export class MonitoramentoPage {
   form = {
@@ -24,9 +29,19 @@ export class MonitoramentoPage {
     tontura: false,
   };
 
-  constructor(private api: ApiService, private alertCtrl: AlertController) {
+  constructor(
+    private api: ApiService, 
+    private alertCtrl: AlertController,
+    private router: Router
+  ) {
+    addIcons({ 'analytics-outline': analyticsOutline, 'people-outline': peopleOutline, 'log-out-outline': logOutOutline });
     const id = localStorage.getItem('usuarioId');
     if (id) this.form.usuarioId = parseInt(id);
+  }
+
+  logout() {
+    localStorage.removeItem('usuarioId');
+    this.router.navigate(['/login']);
   }
 
   registrar() {

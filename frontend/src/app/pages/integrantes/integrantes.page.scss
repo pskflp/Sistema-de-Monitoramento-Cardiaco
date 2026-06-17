@@ -1,0 +1,36 @@
+.integrantes-card {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: var(--app-card-shadow);
+  border: 1px solid #f1f3f5;
+  overflow: hidden;
+}
+
+.title {
+  margin: 0;
+  font-weight: 800;
+  color: var(--app-danger);
+  font-size: 1.4rem;
+}
+
+.subtitle {
+  margin: 4px 0 0 0;
+  color: var(--app-subtitle-color);
+  font-size: 0.9rem;
+}
+
+ion-item {
+  --background: transparent;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--app-title-color);
+  
+  ion-icon {
+    font-size: 1.4rem;
+    margin-right: 12px;
+  }
+}

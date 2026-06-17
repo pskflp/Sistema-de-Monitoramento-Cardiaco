@@ -1,0 +1,40 @@
+.login-card {
+  width: 100%;
+  max-width: 340px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: var(--app-card-shadow);
+  padding: 20px 0;
+  border: 1px solid #f1f3f5;
+}
+
+.main-title {
+  margin: 0;
+  font-weight: 800;
+  color: var(--app-danger);
+  font-size: 1.8rem;
+  letter-spacing: -1px;
+}
+
+.main-subtitle {
+  margin: 4px 0 0 0;
+  color: var(--app-subtitle-color);
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  --background: var(--app-graphite);
+  --color: #ffffff;
+  --border-radius: 8px;
+  height: 52px;
+  font-weight: 700;
+  margin-top: 20px;
+  --box-shadow: none;
+}
+
+.btn-link {
+  --color: var(--app-subtitle-color);
+  font-size: 0.85rem;
+  margin-top: 10px;
+  text-transform: none;
+}

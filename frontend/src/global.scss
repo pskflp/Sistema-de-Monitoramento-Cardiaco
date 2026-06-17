@@ -1,37 +1,49 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+/* Variáveis Globais para Estética Padrão Moderna */
+:root {
+  --ion-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ion-background-color: #fcfcfc;
+  
+  --app-title-color: #212529;
+  --app-subtitle-color: #6c757d;
+  --app-danger: #d90429;
+  --app-warning: #fb8500;
+  --app-success: #38b000;
+  --app-graphite: #2b2d42;
+  
+  --app-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
 
-/* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+/* Reset de fundo no login para evitar o cinza indesejado */
+ion-content {
+  --background: var(--ion-background-color);
+}
 
-/* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 16px;
+}
 
-/* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+/* Inputs Estilo Bootstrap/Moderno */
+ion-item.visible-input {
+  --background: #ffffff;
+  --border-radius: 6px;
+  border: 1px solid #dee2e6;
+  margin-bottom: 12px;
+  --padding-start: 12px;
+  --highlight-height: 0;
+  transition: border-color 0.2s;
+  
+  &.item-has-focus {
+    border-color: var(--app-graphite);
+  }
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+  ion-label {
+    font-size: 0.85rem !important;
+    font-weight: 700;
+    color: #495057;
+    margin-bottom: 6px;
+  }
+}
